@@ -1,0 +1,31 @@
+SQL - STRUCTURED QUERY LANGUAGE - linguagem de consulta estruturada
+
+CREATE - cria alguma coisa
+ALTER - altera alguma coisa
+DROP - deleta alguma coisa
+
+na modelagem usamos
+CREATE TABLE - cria uma tabela
+ALTER TABLE - altera uma tabela
+DROP TABLE - deleta uma tabela
+
+A crase funciona como uma forma de escape quando colunas com nomes reservadas precisam ser usadas EX: `data`
+
+MERTODO DE TRABALHO PROFESSOR
+varios arquivos grandes com cada parte core(central) do sistema
+e um grande arquivo usando uma ferramenta de dart(integrate ou algo do tipo, não conheço ) que possui todo o sistema
+
+Migrations é uma ferramenta que traduz suas açoes em php para mysql
+
+professor prefere a modelagem fisica, mas sempre usa modelagem lógica no mysql workbench para fazer bancos é possivel fazer a conversão para modelagem fisica e vice versa
+conclusão : a modelagem logica é mais precisa e demorada, então mais interessante para projetos complexos
+
+TIPOS DE RESTRIÇÃO NO FOREIGN KEY
+
+NO ACTION - SEM EFEITO IMEDIATO E PODE GERAR ERRO NO BANCO DE DADOS CASO A ESTRUTURA ESTEJA FEITA PARA A RESTRIÇÃO DE INTEGRIDADE DE DADOS
+
+CASCADE - SE O REGISTRO DA TABELA REFERENCIADA FOR DELETADO, OS REGISTROS DEPENDENTES TAMBÉM SERÃO AUTOMATICAMENTE DELETADOS
+
+SET NULL - SE O REGISTRADO DA TABELA REFERENCIADA FOR DELETADO, OS REGISTROS DEPENDETES TERÃO O CAMPO DE CHAVE ESTRANGEIRA MARCADOS COMO NULL(NÃO FUNCIONA EM CAMPOS COM MARCAÇÃO NOT NULL)
+
+RESTRICT - IMPEDE A EXCLUSÃO DE REGISTROS DA TABELA REFERENCIADA SE HOUVER REGISTROS DEPENDENTES

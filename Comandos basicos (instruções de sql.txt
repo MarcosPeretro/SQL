@@ -1,0 +1,82 @@
+Comandos basicos (instruções) de SQL
+
+Dividimos as instruções em algumas categorias, são elas: 
+DDL, DML, DQL, DCL E TCL
+
+DDL -> Data Definition Language (Linguagem de definição de dados)
+Contem comandos utilizado para criar, modificar ou excluir estruturas de banco de dados. estes comandos não manipulam dados, apenas estrutura.
+Comandos relacionados: CREATE, ALTER, DROP, TRUNCATE
+Exemplos:
+CREATE TABLE nome_tabela
+ALTER TABLE nome_tabela
+DROP TABLE nome_tabela
+TRUNCATE TABLE nome_tabela
+
+-------------------------------------
+
+DML -> Data Manipulation Language (Linguagem de Manipulação Dados)
+Contem comandos utilizados para manipular dados nas tabelas inclui inserção, atualização e remoção de registros. Estes não alteram estrutura das tabelas.
+Comandos relacionados: INSERT, UPDATE, DELETE
+Exemplos: 
+INSERT INTO nome_tabela
+UPDATE nome_tabela
+DELETE FROM nome_tabela
+
+-------------------------------------
+
+DQL -> Data Query Language (Linguagem de Consulta de Dados)
+Contem um comando utilizado para consultar os dados no banco de dados ou seja, para fazer queries (consultas).
+Comando relacionado: SELECT
+
+Exemplo: SELECT * FROM nome_tabela ( * refere-se a todas as colunas de uma tabela. é possivel tambem informar o nome de colunas separando-as por vírgula)
+
+-------------------------------------
+DCL -> Data Control Language (Linguagem de Controle de Dados)
+contem comandos que controlam o acesso e permissões de usuários sobre objetos de banco de dados como tableas, views e etc.
+Comandos relacionados: GRANT, REVOKE
+Exemplos:
+GRANT SELECT, INSERT ON nome_tabela
+REVOKE INSERT on nome_tabela
+
+-------------------------------------
+
+TCL -> TRANSACTION Control Language (Linguagem de Controle de Transações)
+Contem comandos que gerenciam as transações de banco de dados. transações são blocos de operações que devem ser executadas juntas ou não executadas.
+Comandos relacionados : BEGIN/START TRANSACTION, COMMIT, ROLLBACK, SAVEPOINT
+Exemplos:
+START TRANSACTION;
+    INSERT INTO
+COMMIT; SE CASO FOI TUDO CERTO
+
+START TRANSACTION
+    UPDATE
+ROLLBACK; SE ALGO DER ERRADO
+
+RELEASE SAVEPOINT nome 
+
+TOMAR MUITO CUIDADO COM COMANDOS 
+
+SEMPRE QUE FOR EXECUTAR ALGUM COMANDO PERIGOSO FAÇA BACKUP LOCAL E EXECUTE NO LOCAL ATÉ O COMANDO SAIR CORRETO
+NÃO EXECUTAR EM PRODUÇÃO
+
+TRUNCATE REMOVE TODOS OS REGISTROS E MANTEM A TABELA
+DROP REMOVE A TABELA INTEIRA JUNTO COM OS REGISTROS
+
+NUNCA DE UPDATE E DELETE SEM WHERE 
+CLAUSULA DE SEGURANÇA FICA NA EDIT -> PREFERENCES -> SQL EDITOR -> ROLAR TELA PARA BAIXO -> SAFE UPDATES(ativo por default) 
+não deixa o comando UPDATE rodar sem WHERE nem todos os SGBD tem essa clausula
+WHERE é uma clausula de filtragem
+
+DELETE sem WHERE é diferente de TRUNCATE
+TRUNCATE volta o AUTO_INCREMENT para 1
+O AUTO_INCREMENT do DELETE continua do ponto que foi deletado
+
+Característica	TRUNCATE	DELETE
+Velocidade :	        Mais rápido (não registra linha a linha),	Mais lento (registra linha a linha)
+Log de transações : 	Menos log (operações em nível de tabela),	Mais log (operações em nível de linha)
+Gatilhos (Triggers) :	Não aciona,	Aciona
+Restrições de chave :   estrangeira	Não pode ter chave estrangeira referenciando a tabela,	Pode ter chave estrangeira referenciando
+Reversibilidade	:       Não pode ser revertido com ROLLBACK,	Pode ser revertido com ROLLBACK
+
+
+
